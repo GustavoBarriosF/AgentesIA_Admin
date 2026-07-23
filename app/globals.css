@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Chat area subtle dot grid */
+  .chat-bg {
+    background-color: hsl(var(--background));
+    background-image: radial-gradient(hsl(var(--border)) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+  }
+
+  /* Glow shadows */
+  .shadow-primary-glow {
+    box-shadow: 0 4px 16px 0 hsl(var(--primary) / 0.28);
+  }
+  .shadow-card {
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  }
+  .shadow-card-md {
+    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  }
+
+  /* Glass card */
+  .glass {
+    background: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.6);
+  }
+}
+
+@layer base {
+  :root {
+    /* ── Base surfaces ─────────────────────────────── */
+    --background:        214 32% 97%;
+    --foreground:        220 45% 10%;
+    --card:              0 0% 100%;
+    --card-foreground:   220 45% 10%;
+    --popover:           0 0% 100%;
+    --popover-foreground:220 45% 10%;
+
+    /* ── Brand ─────────────────────────────────────── */
+    /* Electric indigo-blue — trustworthy, modern, SaaS */
+    --primary:           231 90% 60%;
+    --primary-foreground:0 0% 100%;
+    /* Violet accent */
+    --secondary:         262 80% 58%;
+    --secondary-foreground:0 0% 100%;
+
+    /* ── Neutrals ───────────────────────────────────── */
+    --muted:             214 20% 93%;
+    --muted-foreground:  215 14% 46%;
+    --accent:            231 100% 96%;
+    --accent-foreground: 231 90% 50%;
+
+    /* ── Semantic ───────────────────────────────────── */
+    --destructive:       0 84% 60%;
+    --destructive-foreground:0 0% 100%;
+    --border:            214 20% 88%;
+    --input:             214 20% 88%;
+    --ring:              231 90% 60%;
+    --radius:            0.625rem;
+
+    /* ── Sidebar ────────────────────────────────────── */
+    /* Deep slate-navy — feels premium, white-label ready */
+    --sidebar:           222 47% 8%;
+    --sidebar-foreground:215 28% 84%;
+    --sidebar-border:    222 35% 14%;
+    --sidebar-accent:    222 35% 13%;
+    --sidebar-accent-foreground:0 0% 100%;
+    --sidebar-active:    231 90% 60%;   /* matches primary */
+
+    /* ── Icon tint ───────────────────────────────────── */
+    --icon:              231 90% 60%;
+
+    /* ── Chart palette ──────────────────────────────── */
+    --chart-1: 231 90% 60%;
+    --chart-2: 262 80% 58%;
+    --chart-3: 186 76% 42%;
+    --chart-4: 25 95% 55%;
+    --chart-5: 142 72% 42%;
+  }
+
+  .dark {
+    --background:        222 47% 5%;
+    --foreground:        210 40% 96%;
+    --card:              222 47% 8%;
+    --card-foreground:   210 40% 96%;
+    --popover:           222 47% 8%;
+    --popover-foreground:210 40% 96%;
+
+    --primary:           231 90% 62%;
+    --primary-foreground:0 0% 100%;
+    --secondary:         262 80% 62%;
+    --secondary-foreground:0 0% 100%;
+
+    --muted:             222 40% 12%;
+    --muted-foreground:  215 20% 52%;
+    --accent:            222 47% 14%;
+    --accent-foreground: 231 90% 72%;
+
+    --destructive:       0 72% 42%;
+    --destructive-foreground:0 0% 100%;
+    --border:            222 40% 15%;
+    --input:             222 40% 15%;
+    --ring:              231 90% 62%;
+
+    --sidebar:           222 47% 5%;
+    --sidebar-foreground:215 25% 80%;
+    --sidebar-border:    222 40% 11%;
+    --sidebar-accent:    222 40% 12%;
+    --sidebar-accent-foreground:0 0% 100%;
+    --sidebar-active:    231 90% 62%;
+
+    --icon:              231 90% 62%;
+    --chart-1: 231 90% 62%;
+    --chart-2: 262 80% 62%;
+    --chart-3: 186 76% 48%;
+    --chart-4: 25 95% 58%;
+    --chart-5: 142 72% 48%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Thin modern scrollbar */
+  ::-webkit-scrollbar        { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track  { background: transparent; }
+  ::-webkit-scrollbar-thumb  { @apply bg-border rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-muted-foreground/40; }
+
+  /* Smooth focus rings */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+}
